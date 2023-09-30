@@ -25,7 +25,13 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Bools")]
     [SerializeField] public bool swapMode = false;
     [SerializeField] bool isCrouching = false;
+    public float raycastDistance = 1.5f; 
+    public LayerMask groundLayer;
+    [SerializeField] bool canJump = true;
+    [SerializeField] float jumpCoolDown = 1f;
 
+    [SerializeField] private float coyoteTimer = 0.2f; 
+    [SerializeField] private float coyoteTimeRemaining = 0f;
 
     float horizontalInput;
     Vector2 movement;
@@ -36,9 +42,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !swapMode && KeySwapManager.Instance.currentInputs.Contains(KeyCode.Space))
+
+        isGrounded = IsGrounded();
+
+        if (!isGrounded && coyoteTimeRemaining > 0)
         {
-            //TODO : Cayote timer or that thing when you jump before you land you jump again
+            coyoteTimeRemaining -= Time.deltaTime;
+        }
+
+        if (isGrounded)
+        {
+            coyoteTimeRemaining = coyoteTimer;
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded) && !swapMode && KeySwapManager.Instance.currentInputs.Contains(KeyCode.Space) && canJump)
+        {
             Jump();
         }
 
@@ -61,26 +81,40 @@ public class PlayerController : MonoBehaviour
         {
             Crouch();
         }
-       
-
 
     }
+    bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
+
+        if (hit.collider != null)
+        {
+            Debug.DrawRay(transform.position, Vector2.down * raycastDistance, Color.green); // Visualize the ray in the Unity editor.
+            return true;
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, Vector2.down * raycastDistance, Color.red); // Visualize the ray in the Unity editor.
+            return false;
+        }
+    } 
+
     private void Crouch()
     {
         isCrouching = !isCrouching;
 
         int count = KeySwapManager.Instance.CountKeycodeOccurrences(KeySwapManager.Instance.currentInputs, KeyCode.C);
-        float crouchAmount = 0.7f / count;
+        float crouchAmount = 0.35f / count;
 
         if (isCrouching)
         {
-            transform.localScale = new Vector3(1, crouchAmount, 1);
+            transform.localScale = new Vector3(0.5f, crouchAmount, 0.5f);
 
         }
 
         if (!isCrouching)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
         }
 
@@ -88,8 +122,21 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        int count = KeySwapManager.Instance.CountKeycodeOccurrences(KeySwapManager.Instance.currentInputs, KeyCode.Space);
-        rigidbody.velocity += new Vector2(0, jumpForce + (count * 2));
+
+        if (canJump && (isGrounded || coyoteTimeRemaining > 0))
+        {
+            canJump = false;
+            int count = KeySwapManager.Instance.CountKeycodeOccurrences(KeySwapManager.Instance.currentInputs, KeyCode.Space);
+            rigidbody.velocity += new Vector2(0, jumpForce + (count * 2));
+            StartCoroutine(JumpCoolDown());
+        }
+    }
+
+    private IEnumerator JumpCoolDown()
+    {
+        yield return new WaitForSeconds(jumpCoolDown);
+        canJump = true;
+        yield return null;
     }
 
     private void RestartLevel()
@@ -99,11 +146,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("NoGrounded"))
-        {
-            isGrounded = true;
+        //if (!collision.gameObject.CompareTag("NoGrounded"))
+        //{
+        //    isGrounded = true;
 
-        }
+        //}
 
         if (collision.gameObject.CompareTag("Pickup"))
         {
@@ -113,26 +160,21 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
     }
-
-    
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isGrounded = false;
+        //isGrounded = false;
 
         if (collision.gameObject.CompareTag("Pickup"))
         {
             isInPickupRange = false;
-            isGrounded = true;
+            //isGrounded = true;
             currentPickupInput = 0;
             currentPickUpObject = null;
         }
     }
-
   
-
     private void Move()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -162,7 +204,6 @@ public class PlayerController : MonoBehaviour
 
     public void GetNextKeyPressed()
     {
-
         KeySwapManager.Instance.WaitForNextKeyPress();
         inputThatWillBeRemoved = KeySwapManager.Instance.GetNextPressedKey();
     }
@@ -186,8 +227,5 @@ public class PlayerController : MonoBehaviour
         inputThatWillBeRemoved = inputToRemove;
         FinishSwap(inputToRemove);
     }
-
-
-
 
 }
