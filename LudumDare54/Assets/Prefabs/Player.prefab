@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9186106902270190077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.3, y: 1.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e535d2785b8ee404aa7b11ba6ea502f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
+  jumpForce: 2.5
   isGrounded: 1
-  moveSpeed: 5
+  moveSpeed: 2.5
   maxMoveSpeed: 0
   isInPickupRange: 0
   hasPressedNextKey: 0
@@ -112,6 +112,14 @@ MonoBehaviour:
   currentPickUpObject: {fileID: 0}
   swapMode: 0
   isCrouching: 0
+  raycastDistance: 1.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  canJump: 1
+  jumpCoolDown: 1
+  coyoteTimer: 0.2
+  coyoteTimeRemaining: 0
 --- !u!50 &9186106902270190064
 Rigidbody2D:
   serializedVersion: 4
