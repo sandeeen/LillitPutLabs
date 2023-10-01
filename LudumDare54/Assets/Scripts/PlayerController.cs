@@ -104,17 +104,17 @@ public class PlayerController : MonoBehaviour
         isCrouching = !isCrouching;
 
         int count = KeySwapManager.Instance.CountKeycodeOccurrences(KeySwapManager.Instance.currentInputs, KeyCode.C);
-        float crouchAmount = 0.3f / count;
+        float crouchAmount = 0.75f / count;
 
         if (isCrouching)
         {
-            transform.localScale = new Vector3(0.5f, crouchAmount, 0.5f);
+            transform.localScale = new Vector3(1f, crouchAmount, 1f);
 
         }
 
         if (!isCrouching)
         {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
 
         }
 

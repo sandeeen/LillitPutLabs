@@ -5,6 +5,7 @@ using UnityEngine;
 public class Winzone : MonoBehaviour
 {
     bool hasActivated = false;
+    [SerializeField] AudioClip audioClip;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Respawn"))
@@ -12,6 +13,7 @@ public class Winzone : MonoBehaviour
             if (!hasActivated)
             {
                 hasActivated = true;
+                SoundManager.Instance.PlayAudio(audioClip, 1f);
                 SceneChanger.Instance.NextLevel();
 
             }

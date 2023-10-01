@@ -20,6 +20,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] DontDestroyOnLoad dontDestroyOnLoad;
 
+    bool hasStartedPlayingMusic = false;
+
     private void Awake() 
     {
         if (Instance == null)
@@ -42,8 +44,9 @@ public class SoundManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        if (playIngameMusic)
+        if (playIngameMusic && !hasStartedPlayingMusic)
         {
+            hasStartedPlayingMusic = true;
             PlayGlobalLoopingSound(musicClip, 0.1f);
         }
     }
