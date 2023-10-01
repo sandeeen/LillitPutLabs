@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         isCrouching = !isCrouching;
 
         int count = KeySwapManager.Instance.CountKeycodeOccurrences(KeySwapManager.Instance.currentInputs, KeyCode.C);
-        float crouchAmount = 0.35f / count;
+        float crouchAmount = 0.3f / count;
 
         if (isCrouching)
         {
@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
     public void FinishSwap(KeyCode inputToRemove)
     {
         KeySwapManager.Instance.SwapInput(inputToRemove, currentPickupInput);
-        currentPickUpObject.pickUpInput = inputToRemove;
+        //currentPickUpObject.pickUpInput = inputToRemove;
         UIManager.Instance.HideSwapText();
     }
 

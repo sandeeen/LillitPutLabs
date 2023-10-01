@@ -115,9 +115,9 @@ MonoBehaviour:
   raycastDistance: 1.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 4294967295
   canJump: 1
-  jumpCoolDown: 1
+  jumpCoolDown: 0.5
   coyoteTimer: 0.2
   coyoteTimeRemaining: 0
 --- !u!50 &9186106902270190064
