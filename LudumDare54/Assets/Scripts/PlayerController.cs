@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Bools")]
     [SerializeField] public bool swapMode = false;
     [SerializeField] bool isCrouching = false;
-    public float raycastDistance = 1.5f; 
+    float raycastDistance = 1f; 
     public LayerMask groundLayer;
     [SerializeField] bool canJump = true;
     [SerializeField] float jumpCoolDown = 1f;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded) && !swapMode && KeySwapManager.Instance.currentInputs.Contains(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.W) && (isGrounded) && !swapMode && KeySwapManager.Instance.currentInputs.Contains(KeyCode.W) && canJump)
         {
             Jump();
         }
@@ -123,10 +123,10 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
 
-        if (canJump && (isGrounded || coyoteTimeRemaining > 0))
+        if (canJump)
         {
             canJump = false;
-            int count = KeySwapManager.Instance.CountKeycodeOccurrences(KeySwapManager.Instance.currentInputs, KeyCode.Space);
+            int count = KeySwapManager.Instance.CountKeycodeOccurrences(KeySwapManager.Instance.currentInputs, KeyCode.W);
             rigidbody.velocity += new Vector2(0, jumpForce + (count * 2));
             StartCoroutine(JumpCoolDown());
         }
@@ -146,11 +146,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (!collision.gameObject.CompareTag("NoGrounded"))
-        //{
-        //    isGrounded = true;
+        if (!collision.gameObject.CompareTag("NoGrounded"))
+        {
+            isGrounded = true;
 
-        //}
+        }
 
         if (collision.gameObject.CompareTag("Pickup"))
         {
@@ -164,12 +164,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //isGrounded = false;
 
         if (collision.gameObject.CompareTag("Pickup"))
         {
             isInPickupRange = false;
-            //isGrounded = true;
             currentPickupInput = 0;
             currentPickUpObject = null;
         }
@@ -188,15 +186,12 @@ public class PlayerController : MonoBehaviour
 
         float desiredXVelocity = horizontalInput * (moveSpeed + countLeft + countRight);
 
-        // Check if the player can move in the desired direction
         if ((desiredXVelocity < 0) && KeySwapManager.Instance.currentInputs.Contains(KeyCode.A) || (desiredXVelocity > 0) && KeySwapManager.Instance.currentInputs.Contains(KeyCode.D))
         {
-            // Apply the velocity to the Rigidbody2D
             rigidbody.velocity = new Vector2(desiredXVelocity, rigidbody.velocity.y);
         }
         else
         {
-            // Stop the player if they shouldn't move in this direction
             rigidbody.velocity = new Vector2(0, rigidbody.velocity.y);
         }
 
