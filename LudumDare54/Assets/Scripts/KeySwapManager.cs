@@ -91,7 +91,6 @@ public class KeySwapManager : MonoBehaviour
             }
         }
     }
-
     public void GetKeyToSwap()
     {
         foreach (KeyCode keyCode in currentInputs)
