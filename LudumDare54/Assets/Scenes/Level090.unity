@@ -423,7 +423,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5471165706815633603, guid: 5116eba83bae75348be6fb9e9bc66574, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5471165706815633603, guid: 5116eba83bae75348be6fb9e9bc66574, type: 3}
       propertyPath: m_LocalPosition.x
@@ -690,7 +690,7 @@ Transform:
   - {fileID: 1775904617}
   - {fileID: 1087664657}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371915128
 GameObject:
@@ -1334,7 +1334,7 @@ Transform:
   - {fileID: 371915129}
   - {fileID: 556831148}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &535805540
 GameObject:
@@ -1715,7 +1715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052038407689554809, guid: a970148898db8d5409771e2fbddc8102, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3052038407689554809, guid: a970148898db8d5409771e2fbddc8102, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1801,7 +1801,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3914646032364643393, guid: 492d374ce82c9e24ea018debd94d5dd9, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3914646032364643393, guid: 492d374ce82c9e24ea018debd94d5dd9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1967,7 +1967,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &888384136
 PrefabInstance:
@@ -1978,7 +1978,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5688071288024319863, guid: 8ce72403bd6300a47a98e4b70a29a38b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5688071288024319863, guid: 8ce72403bd6300a47a98e4b70a29a38b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2035,7 +2035,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3914646032364643393, guid: 492d374ce82c9e24ea018debd94d5dd9, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3914646032364643393, guid: 492d374ce82c9e24ea018debd94d5dd9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2633,6 +2633,18 @@ PrefabInstance:
     - target: {fileID: 4597565202180474088, guid: c521d68adad5ede43900943f9a8b7127, type: 3}
       propertyPath: m_Name
       value: KillObstacle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597565202180474091, guid: c521d68adad5ede43900943f9a8b7127, type: 3}
+      propertyPath: m_Color.b
+      value: 0.30588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597565202180474091, guid: c521d68adad5ede43900943f9a8b7127, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597565202180474091, guid: c521d68adad5ede43900943f9a8b7127, type: 3}
+      propertyPath: m_Color.r
+      value: 0.22352941
       objectReference: {fileID: 0}
     - target: {fileID: 4597565202180474092, guid: c521d68adad5ede43900943f9a8b7127, type: 3}
       propertyPath: m_RootOrder
@@ -3655,7 +3667,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9186106902270190066, guid: 7f34d92957b7c474ea50f356a5fc7219, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 9186106902270190066, guid: 7f34d92957b7c474ea50f356a5fc7219, type: 3}
       propertyPath: m_LocalPosition.x
