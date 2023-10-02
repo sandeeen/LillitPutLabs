@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cea5b4c7da34145b7aa512a0fc00ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allAvaiableInputs: 6500000020000000610000006400000063000000
+  allAvaiableInputs: 6500000077000000610000006400000063000000
   startingInputsAvailable: 
   currentInputs: 
   playerDecidesInputs: 0

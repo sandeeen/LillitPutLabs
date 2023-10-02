@@ -115,14 +115,11 @@ MonoBehaviour:
   currentPickUpObject: {fileID: 0}
   swapMode: 0
   isCrouching: 0
-  raycastDistance: 1.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
   canJump: 1
-  jumpCoolDown: 0.5
-  coyoteTimer: 0.2
-  coyoteTimeRemaining: 0
+  jumpCoolDown: 0.25
 --- !u!50 &9186106902270190064
 Rigidbody2D:
   serializedVersion: 4

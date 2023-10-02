@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5458319318322964781, guid: 8ce72403bd6300a47a98e4b70a29a38b, type: 3}
       propertyPath: allScenes.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5458319318322964781, guid: 8ce72403bd6300a47a98e4b70a29a38b, type: 3}
       propertyPath: allScenes.Array.data[6]
@@ -165,6 +165,10 @@ PrefabInstance:
     - target: {fileID: 5458319318322964781, guid: 8ce72403bd6300a47a98e4b70a29a38b, type: 3}
       propertyPath: allScenes.Array.data[13]
       value: Level0120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458319318322964781, guid: 8ce72403bd6300a47a98e4b70a29a38b, type: 3}
+      propertyPath: allScenes.Array.data[14]
+      value: EndingScene
       objectReference: {fileID: 0}
     - target: {fileID: 5688071288024319863, guid: 8ce72403bd6300a47a98e4b70a29a38b, type: 3}
       propertyPath: m_RootOrder
